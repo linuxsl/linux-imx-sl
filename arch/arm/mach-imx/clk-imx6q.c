@@ -870,6 +870,9 @@ static void __init imx6q_clocks_init(struct device_node *ccm_node)
 
 	/* All existing boards with PCIe use LVDS1 */
 	if (IS_ENABLED(CONFIG_PCI_IMX6)) {
+		if (cpu_is_imx6dl())
+			imx_clk_set_parent(clk[IMX6QDL_CLK_LVDS2_SEL], clk[IMX6QDL_CLK_SATA_REF_100M]);
+		else
 		imx_clk_set_parent(clk[IMX6QDL_CLK_LVDS1_SEL], clk[IMX6QDL_CLK_SATA_REF_100M]);
 		np = of_find_compatible_node(NULL, NULL, "snps,dw-pcie");
 		 /* external oscillator is used or not. */
