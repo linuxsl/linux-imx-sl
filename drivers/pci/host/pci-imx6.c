@@ -1163,6 +1163,7 @@ static int __init imx6_pcie_probe(struct platform_device *pdev)
 	struct resource *dbi_base;
 	int ret;
 
+	//return -ENODEV;
 	imx6_pcie = devm_kzalloc(&pdev->dev, sizeof(*imx6_pcie), GFP_KERNEL);
 	if (!imx6_pcie)
 		return -ENOMEM;
